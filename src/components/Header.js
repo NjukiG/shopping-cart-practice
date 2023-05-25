@@ -1,7 +1,15 @@
 import React from "react";
-import { Badge, Container, Dropdown, FormControl, Nav, Navbar } from "react-bootstrap";
+import {
+  Badge,
+  Container,
+  Dropdown,
+  FormControl,
+  Nav,
+  Navbar,
+} from "react-bootstrap";
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 function Header() {
   return (
@@ -21,14 +29,12 @@ function Header() {
           <Nav>
             <Dropdown>
               <Dropdown.Toggle variant="success" id="dropdown-basic">
-                Dropdown Button
-                <Badge>{10}</Badge>
+                <FaShoppingCart fontSize="23px" />
+                {/* <Badge>{10}</Badge> */}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  <span style={{padding: 5}}>Cart is currently empty</span>
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
