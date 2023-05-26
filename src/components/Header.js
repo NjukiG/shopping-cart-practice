@@ -8,7 +8,7 @@ import {
   Nav,
   Navbar,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { CartState } from "../context/Context";
 import { AiFillDelete } from "react-icons/ai";
@@ -23,15 +23,42 @@ function Header() {
     <>
       <Navbar bg="dark" variant="dark" fixed="top">
         <Container>
-          <Navbar.Text className="search">
+          {/* <Navbar.Text className="search">
             <FormControl
               style={{ width: 500 }}
+              type="search"
               placeholder="Searhc your products here..."
               className="m-auto"
+              aria-label="Search"
+              onChange={(e) => {
+                productDispatch({
+                  type: "FILTER_BY_SEARCH",
+                  payload: e.target.value,
+                });
+              }}
             ></FormControl>
-          </Navbar.Text>
+          </Navbar.Text> */}
+          {useLocation().pathname.split("/")[1] !== "cart" && (
+            <Navbar.Text className="search">
+              <FormControl
+                style={{ width: 500 }}
+                type="search"
+                placeholder="Search a product..."
+                className="m-auto"
+                aria-label="Search"
+                onChange={(e) => {
+                  productDispatch({
+                    type: "FILTER_BY_SEARCH",
+                    payload: e.target.value,
+                  });
+                }}
+              />
+            </Navbar.Text>
+          )}
           <Navbar.Brand>
-            <Link to="/"><h2>Shoppiez</h2></Link>
+            <Link to="/">
+              <h2>Shoppiez</h2>
+            </Link>
           </Navbar.Brand>
           <Nav>
             <Dropdown>
