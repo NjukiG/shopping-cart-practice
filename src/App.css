@@ -2,3 +2,35 @@ a {
   text-decoration: none !important;
   color: inherit !important;
 }
+
+.home {
+  display: flex;
+}
+
+.filters {
+  background-color: #12918a;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  margin: 10px;
+  height: auto;
+}
+
+.filters > span {
+  padding-bottom: 20px;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.productContainer {
+  display: flex;
+  width: 78%;
+  padding: 20px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
