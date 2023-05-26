@@ -11,8 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { CartState } from "../context/Context";
-import {AiFillDelete } from "react-icons/ai";
-
+import { AiFillDelete } from "react-icons/ai";
 
 function Header() {
   const {
@@ -22,11 +21,8 @@ function Header() {
   } = CartState();
   return (
     <>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark" fixed="top">
         <Container>
-          <Navbar.Brand>
-            <Link to="/">Shoppiez</Link>
-          </Navbar.Brand>
           <Navbar.Text className="search">
             <FormControl
               style={{ width: 500 }}
@@ -34,6 +30,9 @@ function Header() {
               className="m-auto"
             ></FormControl>
           </Navbar.Text>
+          <Navbar.Brand>
+            <Link to="/"><h2>Shoppiez</h2></Link>
+          </Navbar.Brand>
           <Nav>
             <Dropdown>
               <span>My Cart </span>

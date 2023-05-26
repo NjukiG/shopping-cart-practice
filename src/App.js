@@ -9,6 +9,9 @@ function App() {
   return (
     <BrowserRouter>
     <Header />
+    <br />
+    <br />
+    <br />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
