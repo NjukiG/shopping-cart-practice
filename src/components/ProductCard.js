@@ -1,9 +1,15 @@
 // import { Button } from "bootstrap";
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import { CartState } from "../context/Context";
 import Rating from "./Rating";
 
 function ProductCard({ product }) {
+  const {
+    state: { cart },
+    dispatch,
+  } = CartState();
+
   return (
     <div className="products">
       <Card>
@@ -11,7 +17,9 @@ function ProductCard({ product }) {
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Subtitle>
-            <span>KES:{product.price.split(".")[0]}</span>
+            <span>
+              <strong>KES: {product.price.split(".")[0]}</strong>
+            </span>
             {product.fastDelivery ? (
               <div>Fast Delivery</div>
             ) : (
@@ -19,12 +27,33 @@ function ProductCard({ product }) {
             )}
             <Rating rating={product.ratings} />
           </Card.Subtitle>
-          <Button variant="outline-danger">Remove from Cart</Button>
-          <Button
-            variant={!product.inStock ? "outline-warning" : "outline-success"}
-          >
-            {!product.inStock ? "Out of Stock" : "Add to Cart"}
-          </Button>
+          <br />
+          {cart.some((p) => p.id === product.id) ? (
+            <Button
+              variant="outline-warning"
+              onClick={() =>
+                dispatch({
+                  type: "REMOVE_FROM_CART",
+                  payload: product,
+                })
+              }
+            >
+              Remove from Cart
+            </Button>
+          ) : (
+            <Button
+              disabled={!product.inStock}
+              onClick={() =>
+                dispatch({
+                  type: "ADD_TO_CART",
+                  payload: product,
+                })
+              }
+              variant={!product.inStock ? "danger" : "outline-success"}
+            >
+              {!product.inStock ? "Out of Stock" : "Add to Cart"}
+            </Button>
+          )}
         </Card.Body>
       </Card>
     </div>
