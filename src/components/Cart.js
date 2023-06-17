@@ -63,7 +63,7 @@ function Cart() {
                   <Col md={2}>
                     <Button
                       type="button"
-                      variant="light"
+                      variant="outline-danger"
                       onClick={() =>
                         dispatch({
                           type: "REMOVE_FROM_CART",
@@ -85,7 +85,7 @@ function Cart() {
         <span style={{ fontWeight: 700, fontSize: 20 }}>
           Total: KES {total}
         </span>
-        <Button type="button" variant="primary" disabled={cart.length === 0}>
+        <Button href="/" type="button" variant="primary" disabled={cart.length === 0}>
           Proceed to Checkout
         </Button>
       </div>
